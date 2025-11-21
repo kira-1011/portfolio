@@ -1,13 +1,14 @@
-import { AUTO, Game, Types } from 'phaser';
+import { AUTO, Game, type Types } from 'phaser';
 import { Boot } from './scenes/Boot';
 import { Preloader } from './scenes/Preloader';
+import { HomeScene } from './scenes/HomeScene';
 
 const config: Types.Core.GameConfig = {
     type: AUTO,
     width: window.innerWidth,
     height: window.innerHeight,
     parent: 'game-container',
-    backgroundColor: '#00fff0',
+    backgroundColor: '#d2d2d2',
     pixelArt: true, // Important for crisp pixel art
     physics: {
         default: 'arcade',
@@ -18,7 +19,8 @@ const config: Types.Core.GameConfig = {
     },
     scene: [
         Boot,
-        Preloader
+        Preloader,
+        HomeScene
     ],
     scale: {
         mode: Phaser.Scale.RESIZE,

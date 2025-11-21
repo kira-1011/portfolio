@@ -1,5 +1,4 @@
 import { Scene } from 'phaser';
-import { EventBus } from '../EventBus';
 
 export class Preloader extends Scene {
     constructor() {
@@ -44,16 +43,21 @@ export class Preloader extends Scene {
             percentText.destroy();
         });
 
-        // TODO: Load all game assets here
-        // Example:
-        // this.load.image('player', 'assets/sprites/player.png');
-        // this.load.spritesheet('player-walk', 'assets/sprites/player-walk.png', { frameWidth: 32, frameHeight: 32 });
-        // this.load.image('tileset', 'assets/tiles/office-tileset.png');
-        // this.load.tilemapTiledJSON('home-map', 'assets/maps/home.json');
+        // Load Mystic Woods grass tileset (16x16 tiles)
+        this.load.spritesheet('tiles', 'assets/tiles/mystic-grass.png', {
+            frameWidth: 16,
+            frameHeight: 16
+        });
+
+        // Load Mystic Woods player character (48x48 frames)
+        this.load.spritesheet('player', 'assets/sprites/player.png', {
+            frameWidth: 48,
+            frameHeight: 48
+        });
     }
 
     create() {
-        // Once all assets are loaded, start the home scene
+        // Assets loaded, go directly to HomeScene
         this.scene.start('HomeScene');
     }
 }

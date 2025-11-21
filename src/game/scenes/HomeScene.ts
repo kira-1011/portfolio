@@ -3,61 +3,67 @@ import { EventBus } from '../EventBus';
 import { Player } from '../entities/Player';
 
 export class HomeScene extends Scene {
-    private tileSize = 16;
     private player!: Player;
+    private map!: Phaser.Tilemaps.Tilemap;
 
     constructor() {
         super('HomeScene');
     }
 
     create() {
-        const width = this.cameras.main.width;
-        const height = this.cameras.main.height;
+        this.map = this.make.tilemap({ key: 'world-map' });
 
-        // Calculate how many tiles fit on screen
-        const tilesX = Math.ceil(width / this.tileSize);
-        const tilesY = Math.ceil(height / this.tileSize);
+        // Add Tilesets (Ensure keys match)
+        const grassTiles = this.map.addTilesetImage('grass', 'grass');
+        const objectTiles = this.map.addTilesetImage('objects', 'objects');
+        // Note: If you used 'walls' or 'plains' in Tiled, load them here too!
 
-        // Draw ground tiles (grass pattern)
-        this.createTileBackground(tilesX, tilesY);
+        if (!grassTiles || !objectTiles) {
+            console.error("Tilesets missing!");
+            return;
+        }
 
-        // Create player at center
-        this.player = new Player(this, width / 2, height / 2);
+        // Create Layers
+        const groundLayer = this.map.createLayer('Ground', [grassTiles, objectTiles], 0, 0);
+        
+        // *** COLLISION LOGIC STARTS HERE ***
+        const decorationLayer = this.map.createLayer('Decorations', [grassTiles, objectTiles], 0, 0);
+        
+        // 1. Enable collision for any tile that has collision shapes drawn in Tiled
+        decorationLayer?.setCollisionFromCollisionGroup();
+
+        // Find Spawn Point
+        const spawnPoint = this.map.findObject("Objects", obj => obj.name === "Spawn Point");
+        const startX = spawnPoint ? spawnPoint.x! : 200;
+        const startY = spawnPoint ? spawnPoint.y! : 200;
+
+        // Create Player
+        this.player = new Player(this, startX, startY);
+        
+        // 2. Add Collider
+        // This tells Phaser Physics engine: "Stop 'player' when it hits 'decorationLayer'"
+        this.physics.add.collider(this.player, decorationLayer!);
+
+        // Camera
+        this.cameras.main.startFollow(this.player);
+        this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
+
+        // (Optional) Debug Graphics - Uncomment to see the collision boxes!
+        /*
+        const debugGraphics = this.add.graphics().setAlpha(0.7);
+        decorationLayer?.renderDebug(debugGraphics, {
+            tileColor: null,
+            collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255),
+            faceColor: new Phaser.Display.Color(40, 39, 37, 255)
+        });
+        */
 
         EventBus.emit('current-scene-ready', this);
     }
 
     update() {
-        // Update player
         if (this.player) {
             this.player.update();
-        }
-    }
-
-    createTileBackground(tilesX: number, tilesY: number) {
-        // Create a grass background using Mystic Woods tiles
-        for (let y = 0; y < tilesY; y++) {
-            for (let x = 0; x < tilesX; x++) {
-                // Use varied grass tiles for natural look
-                // Frames 0-3 are usually plain grass variants in Mystic Woods
-                const random = Math.random();
-                let tileFrame = 0;
-
-                if (random > 0.85) {
-                    tileFrame = 1; // Slight grass variation
-                } else if (random > 0.70) {
-                    tileFrame = 2; // Another variation
-                } else if (random > 0.60) {
-                    tileFrame = 3; // Small detail variant
-                }
-
-                this.add.image(
-                    x * this.tileSize + this.tileSize / 2,
-                    y * this.tileSize + this.tileSize / 2,
-                    'tiles',
-                    tileFrame
-                ).setDisplaySize(this.tileSize, this.tileSize);
-            }
         }
     }
 }

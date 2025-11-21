@@ -43,11 +43,16 @@ export class Preloader extends Scene {
             percentText.destroy();
         });
 
-        // Load Mystic Woods grass tileset (16x16 tiles)
-        this.load.spritesheet('tiles', 'assets/tiles/mystic-grass.png', {
-            frameWidth: 16,
-            frameHeight: 16
+        this.load.on('loaderror', (file: { src: any; }) => {
+            console.error('FILE LOAD ERROR:', file.src);
         });
+
+        // Load Tiled map JSON
+        this.load.tilemapTiledJSON('world-map', 'assets/maps/world.json');
+
+        // Load tileset images for the map (must match tileset names in Tiled)
+        this.load.image('grass', 'assets/tiles/mystic-grass.png');
+        this.load.image('objects', 'assets/tiles/mystic-objects.png');
 
         // Load Mystic Woods player character (48x48 frames)
         this.load.spritesheet('player', 'assets/sprites/player.png', {
@@ -57,7 +62,8 @@ export class Preloader extends Scene {
     }
 
     create() {
-        // Assets loaded, go directly to HomeScene
+        // This runs ONLY after all files are successfully loaded
+        console.log("Preload complete, starting HomeScene");
         this.scene.start('HomeScene');
     }
 }

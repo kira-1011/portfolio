@@ -4,10 +4,10 @@ import { Preloader } from './scenes/Preloader';
 
 const config: Types.Core.GameConfig = {
     type: AUTO,
-    width: 1024,
-    height: 768,
+    width: window.innerWidth,
+    height: window.innerHeight,
     parent: 'game-container',
-    backgroundColor: '#2d2d2d',
+    backgroundColor: '#00fff0',
     pixelArt: true, // Important for crisp pixel art
     physics: {
         default: 'arcade',
@@ -21,7 +21,7 @@ const config: Types.Core.GameConfig = {
         Preloader
     ],
     scale: {
-        mode: Phaser.Scale.FIT,
+        mode: Phaser.Scale.RESIZE,
         autoCenter: Phaser.Scale.CENTER_BOTH
     }
 };

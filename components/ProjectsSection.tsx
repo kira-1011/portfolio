@@ -78,7 +78,7 @@ export default function ProjectsSection() {
                         <div className="flex gap-4 items-center">
                             {project.techStack.map((stack) => (
                                 <div key={stack.name} className="flex items-center justify-center" title={stack.name}>
-                                    <stack.icon className="w-6 h-6" />
+                                    <stack.icon className="w-8 h-8" />
                                 </div>
                             ))}
                         </div>

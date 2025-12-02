@@ -84,15 +84,13 @@ export default function ProjectsSection() {
                         <p className="text-gray-400">{project.description}</p>
                         <div className="flex gap-4 items-center">
                             {project.techStack.map((stack) => (
-                                typeof stack.icon === 'function' ? (
-                                    <stack.icon key={stack.name} className="w-8 h-8" />
-                                ) : (
-                                    <i
-                                        key={stack.name}
-                                        className={`ci ${stack.icon} ci-xl`}
-                                        title={stack.name}
-                                    />
-                                )
+                                <span key={stack.name} title={stack.name}>
+                                    {typeof stack.icon === 'function' ? (
+                                        <stack.icon className="w-8 h-8" />
+                                    ) : (
+                                        <i className={`ci ${stack.icon} ci-xl`} />
+                                    )}
+                                </span>
                             ))}
                         </div>
                     </a>

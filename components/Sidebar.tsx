@@ -45,8 +45,8 @@ export default function Sidebar() {
                         onClick={() => handleSelectSection(item.id)}
                         className={`flex items-center gap-4 p-2 transition-colors group ${activeSection === item.id ? 'text-purple-600' : 'text-gray-500 hover:text-black'}`}
                     >
-                        <item.icon size={20} strokeWidth={1.5} className={`transition-colors ${activeSection === item.id ? 'stroke-purple-600' : 'group-hover:stroke-black'}`} />
-                        <span className="text-sm font-medium">{item.label}</span>
+                        <item.icon size={20} strokeWidth={1} className={`transition-colors ${activeSection === item.id ? 'stroke-purple-600' : 'group-hover:stroke-black'}`} />
+                        <span className="text-sm">{item.label}</span>
                     </Link>
                 ))}
             </nav>

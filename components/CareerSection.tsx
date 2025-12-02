@@ -46,9 +46,9 @@ export default function CareerSection() {
             <div className="border-l-2 border-gray-100 ml-2 sm:ml-3 space-y-10 sm:space-y-16">
                 {CAREER_DATA.map((job) => (
                     <div key={job.id} className="relative pl-8 sm:pl-12 group w-fit">
-                        <div className={`absolute -left-[9px] top-2 h-4 w-4 rounded-full border-4 border-white transition-transform duration-300 group-hover:scale-125 ${job.isCurrent ? 'bg-black' : 'bg-gray-200'}`}></div>
+                        <div className={`absolute -left-[9px] top-2 h-4 w-4 rounded-full border-4 border-white transition-all duration-300 group-hover:scale-110 group-hover:bg-primary ${job.isCurrent ? 'bg-black' : 'bg-gray-200'}`}></div>
                         <span className="text-xs sm:text-sm font-mono text-gray-400 mb-2 block">{job.period}</span>
-                        <h3 className="text-xl sm:text-2xl font-medium mb-2 transition-colors duration-300 group-hover:text-purple-600">{job.title}</h3>
+                        <h3 className="text-xl sm:text-2xl font-semibold mb-2">{job.title}</h3>
                         <a
                             href={job.companyUrl}
                             target="_blank"

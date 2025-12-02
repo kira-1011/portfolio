@@ -29,7 +29,7 @@ export default function ContactSection() {
 
     return (
         <section id="contact" className="flex flex-col justify-center">
-            <div className="max-w-4xl w-full">
+            <div className="max-w-xl w-full">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">Contact Me</h2>
                 <p className="text-gray-500 mb-8 sm:mb-12 text-sm sm:text-base">
                     Fill out the form below and I&apos;ll get back to you as soon as possible.
@@ -38,7 +38,7 @@ export default function ContactSection() {
                 <form action={formAction} className="space-y-6">
                     {/* Full Name */}
                     <div>
-                        <label htmlFor="fullName" className="block text-sm font-medium mb-3">
+                        <label htmlFor="fullName" className="block text-sm mb-3">
                             Full Name
                         </label>
                         <input
@@ -48,7 +48,7 @@ export default function ContactSection() {
                             defaultValue={state.data?.fullName}
                             required
                             placeholder="Enter your full name"
-                            className={`w-full px-4 py-3 border rounded-sm focus:outline-none focus:ring-1 transition-colors ${
+                            className={`w-full px-4 py-3 border rounded-sm focus:outline-none focus:ring-1 transition-colors placeholder:text-gray-400 placeholder:text-xs ${
                                 state.errors?.fullName
                                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
                                     : 'border-gray-300 focus:border-purple-600 focus:ring-purple-600'
@@ -63,7 +63,7 @@ export default function ContactSection() {
 
                     {/* Email */}
                     <div>
-                        <label htmlFor="email" className="block text-sm font-medium mb-3">
+                        <label htmlFor="email" className="block text-sm mb-3">
                             Email
                         </label>
                         <input
@@ -73,7 +73,7 @@ export default function ContactSection() {
                             defaultValue={state.data?.email}
                             required
                             placeholder="Enter your email"
-                            className={`w-full px-4 py-3 border rounded-sm focus:outline-none focus:ring-1 transition-colors ${
+                            className={`w-full px-4 py-3 border rounded-sm focus:outline-none focus:ring-1 transition-colors placeholder:text-gray-400 placeholder:text-xs ${
                                 state.errors?.email
                                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
                                     : 'border-gray-300 focus:border-purple-600 focus:ring-purple-600'
@@ -88,7 +88,7 @@ export default function ContactSection() {
 
                     {/* Message */}
                     <div>
-                        <label htmlFor="message" className="block text-sm font-medium mb-3">
+                        <label htmlFor="message" className="block text-sm mb-3">
                             Message
                         </label>
                         <textarea
@@ -98,7 +98,7 @@ export default function ContactSection() {
                             required
                             placeholder="Enter your message"
                             rows={6}
-                            className={`w-full px-4 py-3 border rounded-sm focus:outline-none focus:ring-1 transition-colors ${
+                            className={`w-full px-4 py-3 border rounded-sm focus:outline-none focus:ring-1 transition-colors placeholder:text-gray-400 placeholder:text-xs ${
                                 state.errors?.message
                                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
                                     : 'border-gray-300 focus:border-purple-600 focus:ring-purple-600'

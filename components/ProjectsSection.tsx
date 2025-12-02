@@ -77,7 +77,7 @@ export default function ProjectsSection() {
                                     />
                                 </div>
                             )}
-                            <h3 className="text-xl sm:text-3xl font-medium group-hover:text-purple-600 transition-colors duration-300">
+                            <h3 className="text-xl sm:text-2xl font-semibold group-hover:text-purple-600 transition-colors duration-300">
                                 {project.title}
                             </h3>
                         </div>

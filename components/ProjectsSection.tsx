@@ -18,7 +18,7 @@ const PROJECTS = [
         title: "Crosstalk.ai",
         description: "SEO-optimized website serving over 30K users with multilingual support and semantic search.",
         link: "https://crosstalk.ai/",
-        tech: [
+        techStack: [
             { name: "Django", icon: DjangoIcon },
             { name: "Wagtail", icon: WagtailIcon },
             { name: "Langchain", icon: LangchainIcon },
@@ -30,7 +30,7 @@ const PROJECTS = [
         title: "Linkt.ai",
         description: "Designed and developed using Next.js and WordPress as a headless CMS.",
         link: "https://linkt.ai/",
-        tech: [
+        techStack: [
             { name: "Next.js", icon: NextJsIcon },
             { name: "Three.js", icon: ThreeJsIcon },
             { name: "WordPress", icon: WordPressIcon },
@@ -41,7 +41,7 @@ const PROJECTS = [
         title: "Faith Assistant",
         description: "Front-end and back-end for an assistant chatbot service for churches and cities.",
         link: "https://faithassistant.com/",
-        tech: [
+        techStack: [
             { name: "Django", icon: DjangoIcon },
             { name: "React", icon: ReactIcon },
             { name: "Langchain", icon: LangchainIcon },
@@ -52,7 +52,7 @@ const PROJECTS = [
         title: "A2SV Website Clone",
         description: "Fully functional clone with token-based authentication and profile management.",
         link: "https://a2sv-website-clone.vercel.app/",
-        tech: [
+        techStack: [
             { name: "Next.js", icon: NextJsIcon },
             { name: "Redux", icon: ReduxIcon },
             { name: "TypeScript", icon: TypeScriptIcon }
@@ -64,21 +64,21 @@ export default function ProjectsSection() {
     return (
         <section id="projects">
             <h2 className="text-4xl font-bold mb-12 tracking-tight">PROJECTS</h2>
-            <div className="space-y-24">
+            <div className="space-y-20">
                 {PROJECTS.map((project) => (
                     <a
                         key={project.title}
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block p-6 border border-gray-200 rounded-lg hover:border-purple-600 focus:border-purple-600 transition-colors duration-300 group"
+                        className="block p-6 space-y-6 border border-gray-200 rounded-lg hover:border-purple-600 focus:border-purple-600 transition-colors duration-300 group"
                     >
-                        <h3 className="text-3xl font-medium mb-2 group-hover:text-purple-600 transition-colors duration-300 w-fit">{project.title}</h3>
-                        <p className="text-gray-500 mb-4">{project.description}</p>
+                        <h3 className="text-3xl font-medium group-hover:text-purple-600 transition-colors duration-300 w-fit">{project.title}</h3>
+                        <p className="text-gray-400">{project.description}</p>
                         <div className="flex gap-4 items-center">
-                            {project.tech.map((tech) => (
-                                <div key={tech.name} className="flex items-center justify-center" title={tech.name}>
-                                    <tech.icon className="w-6 h-6" />
+                            {project.techStack.map((stack) => (
+                                <div key={stack.name} className="flex items-center justify-center" title={stack.name}>
+                                    <stack.icon className="w-6 h-6" />
                                 </div>
                             ))}
                         </div>

@@ -8,6 +8,11 @@ import { toast } from 'sonner';
 
 const initialState: ContactFormState = {
     success: false,
+    data: {
+        fullName: '',
+        email: '',
+        message: '',
+    },
 };
 
 export default function ContactSection() {
@@ -40,6 +45,7 @@ export default function ContactSection() {
                             type="text"
                             id="fullName"
                             name="fullName"
+                            defaultValue={state.data?.fullName}
                             required
                             placeholder="Enter your full name"
                             className={`w-full px-4 py-3 border rounded-sm focus:outline-none focus:ring-1 transition-colors ${
@@ -64,6 +70,7 @@ export default function ContactSection() {
                             type="email"
                             id="email"
                             name="email"
+                            defaultValue={state.data?.email}
                             required
                             placeholder="Enter your email"
                             className={`w-full px-4 py-3 border rounded-sm focus:outline-none focus:ring-1 transition-colors ${
@@ -87,6 +94,7 @@ export default function ContactSection() {
                         <textarea
                             id="message"
                             name="message"
+                            defaultValue={state.data?.message}
                             required
                             placeholder="Enter your message"
                             rows={6}

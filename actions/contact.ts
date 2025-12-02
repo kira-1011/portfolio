@@ -34,12 +34,14 @@ export async function submitContactForm(
 
         return {
             success: true,
+            data: result.data,
             message: 'Thank you for your message! I will get back to you soon.',
         }
     } catch (error) {
         console.error('Form submission error:', error)
         return {
             success: false,
+            data: result.data,
             error: 'Something went wrong. Please try again later.',
         }
     }

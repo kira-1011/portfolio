@@ -55,40 +55,40 @@ const PROJECTS = [
 export default function ProjectsSection() {
     return (
         <section id="projects">
-            <h2 className="text-4xl font-bold mb-12 tracking-tight">PROJECTS</h2>
-            <div className="space-y-20">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 tracking-tight">PROJECTS</h2>
+            <div className="space-y-12 sm:space-y-20">
                 {PROJECTS.map((project) => (
                     <a
                         key={project.title}
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block p-6 space-y-6 border border-gray-200 rounded-lg hover:border-purple-600 focus:border-purple-600 transition-colors duration-300 group"
+                        className="block p-4 sm:p-6 space-y-4 sm:space-y-6 border border-gray-200 rounded-lg hover:border-purple-600 focus:border-purple-600 transition-colors duration-300 group"
                     >
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-3 sm:gap-4">
                             {project.projectIcon && (
-                                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5">
+                                <div className="relative z-10 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 shrink-0">
                                     <Image
                                         src={project.projectIcon}
                                         alt={`${project.title} logo`}
                                         width={100}
                                         height={100}
-                                        className="h-9 w-9 object-contain"
+                                        className="h-7 w-7 sm:h-9 sm:w-9 object-contain"
                                     />
                                 </div>
                             )}
-                            <h3 className="text-3xl font-medium group-hover:text-purple-600 transition-colors duration-300">
+                            <h3 className="text-xl sm:text-3xl font-medium group-hover:text-purple-600 transition-colors duration-300">
                                 {project.title}
                             </h3>
                         </div>
-                        <p className="text-gray-400">{project.description}</p>
-                        <div className="flex gap-4 items-center">
+                        <p className="text-gray-400 text-sm sm:text-base">{project.description}</p>
+                        <div className="flex flex-wrap gap-3 sm:gap-4 items-center">
                             {project.techStack.map((stack) => (
                                 <span key={stack.name} title={stack.name}>
                                     {typeof stack.icon === 'function' ? (
-                                        <stack.icon className="w-8 h-8" />
+                                        <stack.icon className="w-6 h-6 sm:w-8 sm:h-8" />
                                     ) : (
-                                        <i className={`ci ${stack.icon} ci-xl`} />
+                                        <i className={`ci ${stack.icon} ci-lg sm:ci-xl`} />
                                     )}
                                 </span>
                             ))}

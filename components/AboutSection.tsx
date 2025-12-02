@@ -28,16 +28,16 @@ export default function AboutSection() {
         <section id="home" className="flex flex-col justify-center">
             <div className="space-y-8">
                 <div>
-                    <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-8">
+                    <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold tracking-tighter mb-6 sm:mb-8">
                         FULL STACK<br />ENGINEER.
                     </h1>
 
-                    <div className="space-y-6 max-w-2xl">
-                        <p className="text-lg text-gray-500 leading-relaxed">
+                    <div className="space-y-4 sm:space-y-6 max-w-2xl">
+                        <p className="text-base sm:text-lg text-gray-500 leading-relaxed">
                             <span className="text-black font-medium">I'm Kirubel Sentayehu,</span> a full stack engineer who enjoys creating applications that are easy to use and impactful.
                         </p>
 
-                        <p className="text-lg text-gray-500 leading-relaxed">
+                        <p className="text-base sm:text-lg text-gray-500 leading-relaxed">
                             I focus on solving challenges and turning ideas into feasible solutions that make a difference. With consistent improvement, My goal to bring creativity and meaningful contributions to every project I work on.
                         </p>
                     </div>

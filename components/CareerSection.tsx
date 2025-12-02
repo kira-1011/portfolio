@@ -36,15 +36,15 @@ const CAREER_DATA = [
 export default function CareerSection() {
     return (
         <section id="career">
-            <h2 className="text-4xl font-bold mb-12 tracking-tight">CAREER</h2>
-            <div className="border-l-2 border-gray-100 ml-3 space-y-16">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 tracking-tight">CAREER</h2>
+            <div className="border-l-2 border-gray-100 ml-2 sm:ml-3 space-y-10 sm:space-y-16">
                 {CAREER_DATA.map((job) => (
-                    <div key={job.id} className="relative pl-12">
+                    <div key={job.id} className="relative pl-8 sm:pl-12">
                         <div className={`absolute -left-[9px] top-2 h-4 w-4 rounded-full border-4 border-white ${job.isCurrent ? 'bg-black' : 'bg-gray-200'}`}></div>
-                        <span className="text-sm font-mono text-gray-400 mb-2 block">{job.period}</span>
-                        <h3 className="text-2xl font-medium mb-2">{job.title}</h3>
-                        <p className="text-gray-500">{job.company}</p>
-                        <p className="text-gray-400 mt-4 max-w-xl leading-relaxed">{job.description}</p>
+                        <span className="text-xs sm:text-sm font-mono text-gray-400 mb-2 block">{job.period}</span>
+                        <h3 className="text-xl sm:text-2xl font-medium mb-2">{job.title}</h3>
+                        <p className="text-gray-500 text-sm sm:text-base">{job.company}</p>
+                        <p className="text-gray-400 mt-3 sm:mt-4 max-w-xl leading-relaxed text-sm sm:text-base">{job.description}</p>
                     </div>
                 ))}
             </div>

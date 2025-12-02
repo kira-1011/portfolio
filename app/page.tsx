@@ -5,7 +5,7 @@ import ContactSection from '@/components/ContactSection';
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-32">
+    <div className="flex flex-col gap-16 sm:gap-24 lg:gap-32">
       <AboutSection />
       <CareerSection />
       <ProjectsSection />

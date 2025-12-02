@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { User, Folder, Mail, Briefcase } from 'lucide-react';
+import { User, Folder, Mail, Briefcase, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
 const MENU_ITEMS = [
@@ -32,24 +32,79 @@ const MENU_ITEMS = [
 
 export default function Sidebar() {
     const [activeSection, setActiveSection] = useState('about');
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
     const handleSelectSection = (section: string) => {
         setActiveSection(section);
+        setIsMobileMenuOpen(false);
     };
+
     return (
-        <aside className="sticky left-0 top-24 w-48 flex flex-col justify-between h-1/2">
-            <nav className="flex flex-col gap-6 transition-colors duration-300">
-                {MENU_ITEMS.map((item) => (
-                    <Link
-                        key={item.id}
-                        href={item.href}
-                        onClick={() => handleSelectSection(item.id)}
-                        className={`flex items-center gap-4 p-2 transition-colors group ${activeSection === item.id ? 'text-purple-600' : 'text-gray-500 hover:text-black'}`}
-                    >
-                        <item.icon size={20} strokeWidth={1} className={`transition-colors ${activeSection === item.id ? 'stroke-purple-600' : 'group-hover:stroke-black'}`} />
-                        <span className="text-sm">{item.label}</span>
-                    </Link>
-                ))}
-            </nav>
-        </aside>
+        <>
+            {/* Mobile Header */}
+            <div className="lg:hidden flex items-center justify-between w-full">
+                <span className="text-lg font-bold">KS</span>
+                <button
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    className="p-2 text-gray-600 hover:text-black transition-colors"
+                    aria-label="Toggle menu"
+                >
+                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
+            </div>
+
+            {/* Mobile Menu Overlay */}
+            {isMobileMenuOpen && (
+                <div
+                    className="lg:hidden fixed inset-0 bg-black/50 z-40"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                />
+            )}
+
+            {/* Mobile Menu Drawer */}
+            <div className={`lg:hidden fixed top-0 right-0 h-full w-64 bg-white z-50 transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+                <div className="p-6">
+                    <div className="flex justify-end mb-8">
+                        <button
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="p-2 text-gray-600 hover:text-black transition-colors"
+                            aria-label="Close menu"
+                        >
+                            <X size={24} />
+                        </button>
+                    </div>
+                    <nav className="flex flex-col gap-6">
+                        {MENU_ITEMS.map((item) => (
+                            <Link
+                                key={item.id}
+                                href={item.href}
+                                onClick={() => handleSelectSection(item.id)}
+                                className={`flex items-center gap-4 p-2 transition-colors group ${activeSection === item.id ? 'text-purple-600' : 'text-gray-500 hover:text-black'}`}
+                            >
+                                <item.icon size={20} strokeWidth={1} className={`transition-colors ${activeSection === item.id ? 'stroke-purple-600' : 'group-hover:stroke-black'}`} />
+                                <span className="text-sm">{item.label}</span>
+                            </Link>
+                        ))}
+                    </nav>
+                </div>
+            </div>
+
+            {/* Desktop Sidebar */}
+            <aside className="hidden lg:block sticky left-0 top-24 w-48 flex-col justify-between h-1/2">
+                <nav className="flex flex-col gap-6 transition-colors duration-300">
+                    {MENU_ITEMS.map((item) => (
+                        <Link
+                            key={item.id}
+                            href={item.href}
+                            onClick={() => handleSelectSection(item.id)}
+                            className={`flex items-center gap-4 p-2 transition-colors group ${activeSection === item.id ? 'text-purple-600' : 'text-gray-500 hover:text-black'}`}
+                        >
+                            <item.icon size={20} strokeWidth={1} className={`transition-colors ${activeSection === item.id ? 'stroke-purple-600' : 'group-hover:stroke-black'}`} />
+                            <span className="text-sm">{item.label}</span>
+                        </Link>
+                    ))}
+                </nav>
+            </aside>
+        </>
     );
 }

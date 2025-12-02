@@ -29,9 +29,9 @@ export default function ContactSection() {
 
     return (
         <section id="contact" className="flex flex-col justify-center">
-            <div className="max-w-4xl">
-                <h2 className="text-4xl md:text-5xl font-bold mb-4">Contact Me</h2>
-                <p className="text-gray-500 mb-12">
+            <div className="max-w-4xl w-full">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">Contact Me</h2>
+                <p className="text-gray-500 mb-8 sm:mb-12 text-sm sm:text-base">
                     Fill out the form below and I&apos;ll get back to you as soon as possible.
                 </p>
 

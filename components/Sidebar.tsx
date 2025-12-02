@@ -1,43 +1,33 @@
 'use client';
-import Link from 'next/link';
+import { Link as ScrollLink } from 'react-scroll';
 import { User, Folder, Mail, Briefcase, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
 const MENU_ITEMS = [
     {
         id: 'about',
-        href: '/',
         label: 'About',
         icon: User
     },
     {
         id: 'career',
-        href: '#career',
         label: 'Career',
         icon: Briefcase
     },
     {
         id: 'projects',
-        href: '#projects',
         label: 'Projects',
         icon: Folder
     },
     {
         id: 'contact',
-        href: '#contact',
         label: 'Contact',
         icon: Mail
     }
 ]
 
 export default function Sidebar() {
-    const [activeSection, setActiveSection] = useState('about');
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-    const handleSelectSection = (section: string) => {
-        setActiveSection(section);
-        setIsMobileMenuOpen(false);
-    };
 
     return (
         <>
@@ -75,15 +65,20 @@ export default function Sidebar() {
                     </div>
                     <nav className="flex flex-col gap-6">
                         {MENU_ITEMS.map((item) => (
-                            <Link
+                            <ScrollLink
                                 key={item.id}
-                                href={item.href}
-                                onClick={() => handleSelectSection(item.id)}
-                                className={`flex items-center gap-4 p-2 transition-colors group ${activeSection === item.id ? 'text-purple-600' : 'text-gray-500 hover:text-black'}`}
+                                to={item.id}
+                                spy={true}
+                                smooth={true}
+                                offset={-50}
+                                duration={300}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                activeClass="text-primary [&>svg]:stroke-primary"
+                                className="flex items-center gap-4 p-2 transition-colors cursor-pointer text-gray-500 hover:text-black group"
                             >
-                                <item.icon size={20} strokeWidth={1} className={`transition-colors ${activeSection === item.id ? 'stroke-purple-600' : 'group-hover:stroke-black'}`} />
+                                <item.icon size={20} strokeWidth={1} className="transition-colors group-hover:stroke-black" />
                                 <span className="text-sm">{item.label}</span>
-                            </Link>
+                            </ScrollLink>
                         ))}
                     </nav>
                 </div>
@@ -93,15 +88,19 @@ export default function Sidebar() {
             <aside className="hidden lg:block sticky left-0 top-24 w-48 flex-col justify-between h-1/2">
                 <nav className="flex flex-col gap-6 transition-colors duration-300">
                     {MENU_ITEMS.map((item) => (
-                        <Link
+                        <ScrollLink
                             key={item.id}
-                            href={item.href}
-                            onClick={() => handleSelectSection(item.id)}
-                            className={`flex items-center gap-4 p-2 transition-colors group ${activeSection === item.id ? 'text-purple-600' : 'text-gray-500 hover:text-black'}`}
+                            to={item.id}
+                            spy={true}
+                            smooth={true}
+                            offset={-50}
+                            duration={500}
+                            activeClass="!text-primary [&>svg]:!stroke-primary"
+                            className="flex items-center gap-4 p-2 transition-colors cursor-pointer text-gray-500 hover:text-black group"
                         >
-                            <item.icon size={20} strokeWidth={1} className={`transition-colors ${activeSection === item.id ? 'stroke-purple-600' : 'group-hover:stroke-black'}`} />
+                            <item.icon size={20} strokeWidth={1} className="transition-colors group-hover:stroke-black" />
                             <span className="text-sm">{item.label}</span>
-                        </Link>
+                        </ScrollLink>
                     ))}
                 </nav>
             </aside>

@@ -25,7 +25,7 @@ const SOCIAL_LINKS = [
 
 export default function AboutSection() {
     return (
-        <section id="home" className="flex flex-col justify-center">
+        <section id="about" className="flex flex-col justify-center">
             <div className="space-y-8">
                 <div>
                     <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold tracking-tighter mb-6 sm:mb-8">

@@ -115,7 +115,7 @@ export default function ContactSection() {
                     <button
                         type="submit"
                         disabled={isPending}
-                        className="flex items-center gap-2 px-6 py-2 group border border-gray-300 text-gray-500 rounded-sm hover:cursor-pointer hover:border-purple-600 hover:text-purple-600 transition-colors duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="btn-primary group"
                     >
                         {isPending ? (
                             <>

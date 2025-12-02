@@ -1,6 +1,6 @@
 'use client';
 import { Link as ScrollLink } from 'react-scroll';
-import { User, Folder, Mail, Briefcase, Menu, X } from 'lucide-react';
+import { User, Folder, Mail, Briefcase, Menu, X, Download } from 'lucide-react';
 import { useState } from 'react';
 
 const MENU_ITEMS = [
@@ -81,6 +81,16 @@ export default function Sidebar() {
                             </ScrollLink>
                         ))}
                     </nav>
+                    
+                    {/* Mobile Download Resume Button */}
+                    <a
+                        href="/resume.pdf"
+                        download
+                        className="btn-primary mt-8 w-full justify-center group"
+                    >
+                        <Download size={18} className="group-hover:translate-y-0.5 transition-transform duration-300" />
+                        Resume
+                    </a>
                 </div>
             </div>
 
@@ -103,6 +113,16 @@ export default function Sidebar() {
                         </ScrollLink>
                     ))}
                 </nav>
+                
+                {/* Desktop Download Resume Button */}
+                <a
+                    href="/resume.pdf"
+                    download
+                    className="btn-primary w-fit mt-12 group"
+                >
+                    <Download size={18} className="group-hover:translate-y-0.5 transition-transform duration-300" />
+                    Resume
+                </a>
             </aside>
         </>
     );

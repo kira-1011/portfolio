@@ -46,8 +46,8 @@ html {
 
 @utility bg-grid {
   background-size: 100px 100px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.02) 0.5px, transparent 0.5px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 0.5px, transparent 0.5px);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.025) 0.5px, transparent 0.5px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.025) 0.5px, transparent 0.5px);
   background-attachment: fixed;
 }
 

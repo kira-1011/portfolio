@@ -84,7 +84,7 @@ export default function Sidebar() {
                     
                     {/* Mobile Download Resume Button */}
                     <a
-                        href="/resume.pdf"
+                        href="/Kirubel-Resume-2025.pdf"
                         download
                         className="btn-primary mt-8 w-full justify-center group"
                     >
@@ -116,7 +116,7 @@ export default function Sidebar() {
                 
                 {/* Desktop Download Resume Button */}
                 <a
-                    href="/resume.pdf"
+                    href="/Kirubel-Resume-2025.pdf"
                     download
                     className="btn-primary w-fit mt-12 group"
                 >

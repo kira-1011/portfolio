@@ -1,7 +1,7 @@
 'use client';
-import { Link as ScrollLink } from 'react-scroll';
+import { Link as ScrollLink, scrollSpy } from 'react-scroll';
 import { User, Folder, Mail, Briefcase, Menu, X, Download } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const MENU_ITEMS = [
@@ -29,6 +29,11 @@ const MENU_ITEMS = [
 
 export default function Sidebar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    useEffect(() => {
+        // Update scrollSpy on mount to detect correct active section
+        scrollSpy.update();
+    }, []);
 
     return (
         <>
@@ -71,8 +76,8 @@ export default function Sidebar() {
                                 to={item.id}
                                 spy={true}
                                 smooth={true}
-                                offset={-50}
-                                duration={300}
+                                offset={-100}
+                                duration={200}
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 activeClass="text-primary [&>svg]:stroke-primary"
                                 className="flex items-center gap-4 p-2 transition-colors cursor-pointer text-gray-500 hover:text-black group"
@@ -82,7 +87,7 @@ export default function Sidebar() {
                             </ScrollLink>
                         ))}
                     </nav>
-                    
+
                     {/* Mobile Download Resume Button */}
                     <a
                         href="/Kirubel-Resume-2025.pdf"
@@ -104,8 +109,8 @@ export default function Sidebar() {
                             to={item.id}
                             spy={true}
                             smooth={true}
-                            offset={-50}
-                            duration={500}
+                            offset={-100}
+                            duration={200}
                             activeClass="!text-primary [&>svg]:!stroke-primary"
                             className="flex items-center gap-4 p-2 transition-colors cursor-pointer text-gray-500 hover:text-black group"
                         >
@@ -114,7 +119,7 @@ export default function Sidebar() {
                         </ScrollLink>
                     ))}
                 </nav>
-                
+
                 {/* Desktop Download Resume Button */}
                 <a
                     href="/Kirubel-Resume-2025.pdf"

@@ -37,7 +37,7 @@ export default function ContactSection() {
     }, []);
 
     return (
-        <section id="contact" className="flex flex-col justify-center">
+        <section id="contact" className="flex flex-col justify-center pb-28">
             <div className="max-w-xl w-full">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">Contact Me</h2>
                 <p className="text-gray-500 mb-8 sm:mb-12 text-sm sm:text-base">

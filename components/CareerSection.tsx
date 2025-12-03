@@ -43,17 +43,17 @@ export default function CareerSection() {
     return (
         <section id="career">
             <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 tracking-tight">CAREER</h2>
-            <div className="border-l-2 border-gray-100 ml-2 sm:ml-3 space-y-10 sm:space-y-16">
+            <div className="border-l-2 border-gray-100 dark:border-gray-800 ml-2 sm:ml-3 space-y-10 sm:space-y-16">
                 {CAREER_DATA.map((job) => (
                     <div key={job.id} className="relative pl-8 sm:pl-12 group w-fit">
-                        <div className={`absolute -left-[9px] top-2 h-4 w-4 rounded-full border-4 border-white transition-all duration-300 group-hover:scale-110 group-hover:bg-primary ${job.isCurrent ? 'bg-black' : 'bg-gray-200'}`}></div>
+                        <div className={`absolute -left-[9px] top-2 h-4 w-4 rounded-full border-4 border-white dark:border-gray-900 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary dark:group-hover:bg-primary ${job.isCurrent ? 'bg-black dark:bg-white' : 'bg-gray-200 dark:bg-gray-700'}`}></div>
                         <span className="text-xs sm:text-sm font-mono text-gray-400 mb-2 block">{job.period}</span>
                         <h3 className="text-xl sm:text-2xl font-semibold mb-2">{job.title}</h3>
                         <a
                             href={job.companyUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-500 text-sm sm:text-base hover:text-purple-600 hover:underline transition-colors duration-300 inline-flex items-center gap-2"
+                            className="text-gray-500 dark:text-gray-400 text-sm sm:text-base hover:text-purple-600 hover:underline transition-colors duration-300 inline-flex items-center gap-2"
                         >
                             {job.company}
                             <ExternalLink size={16} />

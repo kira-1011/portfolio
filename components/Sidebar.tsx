@@ -2,7 +2,7 @@
 import { Link as ScrollLink, scrollSpy } from 'react-scroll';
 import { User, Folder, Mail, Briefcase, Menu, X, Download } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { ModeToggle } from './ModeToggle';
 
 const MENU_ITEMS = [
     {
@@ -38,11 +38,11 @@ export default function Sidebar() {
     return (
         <>
             {/* Mobile Header */}
-            <div className="lg:hidden flex items-center justify-between w-full">
-                <Image src="/logo.svg" alt="Kirubel Portfolio Logo" className="w-8 h-8 aspect-auto rounded-full" width={32} height={32} />
+            <div className="lg:hidden flex items-center justify-end w-full gap-6">
+                <ModeToggle />
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="p-2 text-gray-600 hover:text-black transition-colors"
+                    className="p-2 text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors"
                     aria-label="Toggle menu"
                 >
                     {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -58,12 +58,12 @@ export default function Sidebar() {
             )}
 
             {/* Mobile Menu Drawer */}
-            <div className={`lg:hidden fixed top-0 right-0 h-full w-64 bg-white z-50 transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+            <div className={`lg:hidden fixed top-0 right-0 h-full w-64 bg-white dark:bg-black z-50 transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                 <div className="p-6">
                     <div className="flex justify-end mb-8">
                         <button
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="p-2 text-gray-600 hover:text-black transition-colors"
+                            className="p-2 text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors"
                             aria-label="Close menu"
                         >
                             <X size={24} />
@@ -80,9 +80,9 @@ export default function Sidebar() {
                                 duration={200}
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 activeClass="text-primary [&>svg]:stroke-primary"
-                                className="flex items-center gap-4 p-2 transition-colors cursor-pointer text-gray-500 hover:text-black group"
+                                className="flex items-center gap-4 p-2 transition-colors cursor-pointer text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white group"
                             >
-                                <item.icon size={20} strokeWidth={1} className="transition-colors group-hover:stroke-black" />
+                                <item.icon size={20} strokeWidth={1} className="transition-colors group-hover:stroke-black dark:group-hover:stroke-white" />
                                 <span className="text-sm">{item.label}</span>
                             </ScrollLink>
                         ))}
@@ -112,9 +112,9 @@ export default function Sidebar() {
                             offset={-100}
                             duration={200}
                             activeClass="!text-primary [&>svg]:!stroke-primary"
-                            className="flex items-center gap-4 p-2 transition-colors cursor-pointer text-gray-500 hover:text-black group"
+                            className="flex items-center gap-4 p-2 transition-colors cursor-pointer text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white group"
                         >
-                            <item.icon size={20} strokeWidth={1} className="transition-colors group-hover:stroke-black" />
+                            <item.icon size={20} strokeWidth={1} className="transition-colors group-hover:stroke-black dark:group-hover:stroke-white" />
                             <span className="text-sm">{item.label}</span>
                         </ScrollLink>
                     ))}
@@ -129,6 +129,7 @@ export default function Sidebar() {
                     <Download size={18} className="group-hover:translate-y-0.5 transition-transform duration-300" />
                     Resume
                 </a>
+             
             </aside>
         </>
     );

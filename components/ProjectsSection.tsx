@@ -63,11 +63,11 @@ export default function ProjectsSection() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block p-4 sm:p-6 space-y-4 sm:space-y-6 border border-gray-200 rounded-lg hover:border-purple-600 focus:border-purple-600 transition-colors duration-300 group"
+                        className="block p-4 sm:p-6 space-y-4 sm:space-y-6 border border-gray-200 dark:border-gray-800 rounded-lg  dark:hover:border-purple-600 hover:border-purple-600 focus:border-purple-600 transition-colors duration-300 group"
                     >
                         <div className="flex items-center gap-3 sm:gap-4">
                             {project.projectIcon && (
-                                <div className="relative z-10 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 shrink-0">
+                                <div className="relative z-10 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:ring-zinc-700/50 shrink-0">
                                     <Image
                                         src={project.projectIcon}
                                         alt={`${project.title} logo`}
@@ -88,7 +88,7 @@ export default function ProjectsSection() {
                                     {typeof stack.icon === 'function' ? (
                                         <stack.icon className="w-6 h-6 sm:w-8 sm:h-8" />
                                     ) : (
-                                        <i className={`ci ${stack.icon} ci-lg sm:ci-xl`} />
+                                        <i className={`ci ${stack.icon} ci-lg sm:ci-xl dark:[&>path]:fill-white`} />
                                     )}
                                 </span>
                             ))}

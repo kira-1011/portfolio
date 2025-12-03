@@ -40,7 +40,7 @@ export default function ContactSection() {
         <section id="contact" className="flex flex-col justify-center pb-28">
             <div className="max-w-xl w-full">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">Contact Me</h2>
-                <p className="text-gray-500 mb-8 sm:mb-12 text-sm sm:text-base">
+                <p className="text-gray-500 dark:text-gray-400 mb-8 sm:mb-12 text-sm sm:text-base">
                     Fill out the form below and I&apos;ll get back to you as soon as possible.
                 </p>
 
@@ -57,10 +57,10 @@ export default function ContactSection() {
                             defaultValue={state.data?.fullName}
                             required
                             placeholder="Enter your full name"
-                            className={`w-full px-4 py-3 border rounded-sm focus:outline-none focus:ring-1 transition-colors placeholder:text-gray-400 placeholder:text-xs ${
+                            className={`w-full px-4 py-3 border rounded-sm focus:outline-none focus:ring-1 transition-colors placeholder:text-gray-400 placeholder:text-xs bg-transparent ${
                                 state.errors?.fullName
                                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                                    : 'border-gray-300 focus:border-purple-600 focus:ring-purple-600'
+                                    : 'border-gray-300 dark:border-gray-700 focus:border-purple-600 focus:ring-purple-600'
                             }`}
                         />
                         {state.errors?.fullName && (
@@ -82,10 +82,10 @@ export default function ContactSection() {
                             defaultValue={state.data?.email}
                             required
                             placeholder="Enter your email"
-                            className={`w-full px-4 py-3 border rounded-sm focus:outline-none focus:ring-1 transition-colors placeholder:text-gray-400 placeholder:text-xs ${
+                            className={`w-full px-4 py-3 border rounded-sm focus:outline-none focus:ring-1 transition-colors placeholder:text-gray-400 placeholder:text-xs bg-transparent ${
                                 state.errors?.email
                                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                                    : 'border-gray-300 focus:border-purple-600 focus:ring-purple-600'
+                                    : 'border-gray-300 dark:border-gray-700 focus:border-purple-600 focus:ring-purple-600'
                             }`}
                         />
                         {state.errors?.email && (
@@ -107,10 +107,10 @@ export default function ContactSection() {
                             required
                             placeholder="Enter your message"
                             rows={6}
-                            className={`w-full px-4 py-3 border rounded-sm focus:outline-none focus:ring-1 transition-colors placeholder:text-gray-400 placeholder:text-xs ${
+                            className={`w-full px-4 py-3 border rounded-sm focus:outline-none focus:ring-1 transition-colors placeholder:text-gray-400 placeholder:text-xs bg-transparent ${
                                 state.errors?.message
                                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                                    : 'border-gray-300 focus:border-purple-600 focus:ring-purple-600'
+                                    : 'border-gray-300 dark:border-gray-700 focus:border-purple-600 focus:ring-purple-600'
                             }`}
                         />
                         {state.errors?.message && (

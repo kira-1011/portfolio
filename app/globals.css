@@ -12,7 +12,6 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  /* purple-600 as primary */
   --primary: oklch(0.558 0.288 302.321);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
@@ -45,16 +44,14 @@ html {
 }
 
 @utility bg-grid {
-  background-size: 100px 100px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.025) 0.5px, transparent 0.5px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.025) 0.5px, transparent 0.5px);
-  background-attachment: fixed;
+  @apply bg-size-[100px_100px] bg-[linear-gradient(to_right,rgba(0,0,0,0.028)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.028)_1px,transparent_1px)] bg-fixed;
+  @apply dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.028)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.028)_1px,transparent_1px)] bg-fixed;
 }
 
 @utility btn-primary {
-  @apply inline-flex items-center gap-2 px-6 py-2 border border-gray-300 text-gray-500 rounded-sm;
+  @apply inline-flex items-center gap-2 px-6 py-2 border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 rounded-sm;
   @apply hover:cursor-pointer hover:border-primary hover:text-primary;
-  @apply transition-colors duration-300 font-medium;
+  @apply transition-colors duration-300;
   @apply disabled:opacity-50 disabled:cursor-not-allowed;
 }
 
@@ -110,8 +107,9 @@ body {
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  /* Keep purple as primary in dark mode (slightly brighter for visibility) */
+  --primary: oklch(0.627 0.265 303.9);
+  --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
@@ -141,6 +139,7 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

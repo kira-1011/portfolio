@@ -36,11 +36,11 @@ export default function AboutSection() {
                         </h1>
 
                         <div className="space-y-4 sm:space-y-6 max-w-2xl">
-                            <p className="text-base sm:text-lg text-gray-500 leading-relaxed">
-                                <span className="text-black font-medium">I'm Kirubel Sentayehu,</span> a full stack engineer who enjoys creating applications that are easy to use and impactful.
+                            <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400 leading-relaxed">
+                                <span className="text-black dark:text-white font-medium">I'm Kirubel Sentayehu,</span> a full stack engineer who enjoys creating applications that are easy to use and impactful.
                             </p>
 
-                            <p className="text-base sm:text-lg text-gray-500 leading-relaxed">
+                            <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400 leading-relaxed">
                                 I focus on solving challenges and turning ideas into feasible solutions that make a difference. With consistent improvement, My goal to bring creativity and meaningful contributions to every project I work on.
                             </p>
                         </div>
@@ -64,7 +64,7 @@ export default function AboutSection() {
                 </div>
 
                 {/* Avatar */}
-                <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-96 lg:h-96 aspect-square rounded-full overflow-hidden ring-4 ring-gray-100 shadow-xl">
+                <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-96 lg:h-96 aspect-square rounded-full overflow-hidden ring-4 ring-gray-100 dark:ring-gray-800 shadow-xl">
                     <Image
                         src="/me.png"
                         alt="Kirubel Sentayehu"

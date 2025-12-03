@@ -84,11 +84,11 @@ export default function ProjectsSection() {
                         <p className="text-gray-400 text-sm sm:text-base">{project.description}</p>
                         <div className="flex flex-wrap gap-3 sm:gap-4 items-center">
                             {project.techStack.map((stack) => (
-                                <span key={stack.name} title={stack.name}>
+                                <span key={stack.name} title={stack.name} className='flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-900'>
                                     {typeof stack.icon === 'function' ? (
-                                        <stack.icon className="w-6 h-6 sm:w-8 sm:h-8" />
+                                        <stack.icon className="sm:w-6 sm:h-6" />
                                     ) : (
-                                        <i className={`ci ${stack.icon} ci-lg sm:ci-xl dark:[&>path]:fill-white`} />
+                                        <i className={`ci ${stack.icon} ci-xl`} />
                                     )}
                                 </span>
                             ))}

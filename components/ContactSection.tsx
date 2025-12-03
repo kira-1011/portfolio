@@ -1,10 +1,11 @@
 'use client';
 
-import { ArrowRight, Loader2 } from 'lucide-react';
+import { ArrowRight, Loader2, Calendar } from 'lucide-react';
 import { useActionState, useEffect } from 'react';
 import { submitContactForm } from '@/actions/contact';
 import { ContactFormState } from '@/types';
 import { toast } from 'sonner';
+import { getCalApi } from "@calcom/embed-react";
 
 const initialState: ContactFormState = {
     success: false,
@@ -25,7 +26,15 @@ export default function ContactSection() {
         if (state.error) {
             toast.error(state.error);
         }
-    }, [state.success, state.message, state.error]);    
+    }, [state.success, state.message, state.error]);
+
+    // Initialize Cal.com
+    useEffect(() => {
+        (async function () {
+            const cal = await getCalApi({ namespace: "15min" });
+            cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
+        })();
+    }, []);
 
     return (
         <section id="contact" className="flex flex-col justify-center">
@@ -111,24 +120,39 @@ export default function ContactSection() {
                         )}
                     </div>
 
-                    {/* Submit Button */}
-                    <button
-                        type="submit"
-                        disabled={isPending}
-                        className="btn-primary group"
-                    >
-                        {isPending ? (
-                            <>
-                                <Loader2 size={20} className="animate-spin" />
-                                Sending...
-                            </>
-                        ) : (
-                            <>
-                                Submit
-                                <ArrowRight size={20} className='group-hover:translate-x-1 transition-transform duration-300' />
-                            </>
-                        )}
-                    </button>
+                    {/* Buttons */}
+                    <div className="flex flex-wrap gap-4">
+                        {/* Submit Button */}
+                        <button
+                            type="submit"
+                            disabled={isPending}
+                            className="btn-primary group"
+                        >
+                            {isPending ? (
+                                <>
+                                    <Loader2 size={20} className="animate-spin" />
+                                    Sending...
+                                </>
+                            ) : (
+                                <>
+                                    Submit
+                                    <ArrowRight size={20} className='group-hover:translate-x-1 transition-transform duration-300' />
+                                </>
+                            )}
+                        </button>
+
+                        {/* Schedule Button */}
+                        <button
+                            type="button"
+                            data-cal-namespace="15min"
+                            data-cal-link="kirubel-sentayehu/15min"
+                            data-cal-config='{"layout":"month_view"}'
+                            className="btn-primary group"
+                        >
+                            <Calendar size={20} />
+                            Schedule a Call
+                        </button>
+                    </div>
                 </form>
             </div>
         </section>

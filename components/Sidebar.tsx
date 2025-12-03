@@ -2,6 +2,7 @@
 import { Link as ScrollLink } from 'react-scroll';
 import { User, Folder, Mail, Briefcase, Menu, X, Download } from 'lucide-react';
 import { useState } from 'react';
+import Image from 'next/image';
 
 const MENU_ITEMS = [
     {
@@ -33,7 +34,7 @@ export default function Sidebar() {
         <>
             {/* Mobile Header */}
             <div className="lg:hidden flex items-center justify-between w-full">
-                <span className="text-lg font-bold">KS</span>
+                <Image src="/logo.svg" alt="Kirubel Portfolio Logo" className="w-8 h-8 aspect-auto rounded-full" width={32} height={32} />
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     className="p-2 text-gray-600 hover:text-black transition-colors"
